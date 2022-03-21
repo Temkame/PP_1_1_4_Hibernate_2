@@ -1,25 +1,25 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
-import java.awt.dnd.DragGestureEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.util.List;
 
 public class Main {
-
-        private static final UserService userService = new UserServiceImpl();
-
-        public static void main(String[] args) {
-            userService.createUsersTable();
-            userService.saveUser("Artem", "Fokin", (byte) 20);
-            userService.saveUser("Sergey", "Lomov", (byte) 30);
-            userService.saveUser("Mihail", "Rognin", (byte) 45);
-            userService.saveUser("Evgeniy", "Artemov", (byte) 40);
-            System.out.println(userService.getAllUsers());
-//            userService.cleanUsersTable();
-//            userService.dropUsersTable();
+    public static void main(String[] args) {
+        UserService userService = new UserServiceImpl();
+        userService.createUsersTable();
+        userService.saveUser("Ivan", "Ivanov", (byte) 35);
+        userService.saveUser("Antov", "Kulibin", (byte) 25);
+        userService.saveUser("Stas", "Mihailjlob", (byte) 55);
+        userService.saveUser("Andrey", "Zadrotov", (byte) 27);
+        for (User user : userService.getAllUsers()) {
+            System.out.println(user);
         }
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
+
+    }
 }
